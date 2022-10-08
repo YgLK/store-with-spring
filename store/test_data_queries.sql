@@ -1,31 +1,9 @@
-# WEB-Jakub-Szpunar
+#-------- README--------------ś
+# Sample login credentials:
+# email: admin
+# password: cat123
+#------------------------------------
 
-<h1 align="center"> Web Store
-
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
-[![Generic badge](https://img.shields.io/badge/MAVEN-<COLOR>.svg)](https://shields.io/)
-[![Generic badge](https://img.shields.io/badge/coverage-60/100-yellow.svg)](https://shields.io/)
-
-## Table of Contents
-
-- [Instructions](#instructions)
-- [Project goals](#project_goals)
-
-
-## Instructions <a name="instructions"></a>
-
-MySQL database run in the Docker container is used in the project. <br> 
-1. To run the Docker type in the following:
-```console
-cd store
-
-docker-compose up -d
-```
-
-2. Open Docker Desktop and run the shown MySQL container.
-3. Run the Tomcat Server from IntelliJ which will build the essential tables with the use of Hibernate.
-4. Connect to the MySQL db and fill the database with the test data by entering the following [queries](https://github.com/gridu/WEB-Jakub-Szpunar/blob/dev/store/test_data_queries.sql):
-```sql
 # Fill the database with sample data for testing
 INSERT INTO store.store_products(price, productName, quantityStock) VALUES
                                      (33, "Shorts", 15),
@@ -58,6 +36,20 @@ INSERT INTO store.store_order_items(order_id, product_id, quantity) VALUES
                                                        (2, 3, 3),
                                                        (2, 9, 6),
                                                        (2, 4, 5);
-```
-5. Rerun the Tomcat Server.
-6. All set up! All the data should be visible in the app.
+
+# -- DB QUERIES --
+# Get all the data in one table
+SELECT * FROM store_users su
+                  INNER JOIN store_orders so ON su.id = so.user_id
+                  INNER JOIN store_order_items soi ON so.id = soi.order_id
+                  INNER JOIN store_products sp ON soi.product_Id = sp.id;
+
+# Get order summary data - used in Order repository
+SELECT so.id AS order_id, so.orderDate, su.firstname, su.lastname, su.email, SUM(soi.quantity * sp.price) AS summary FROM store_users su
+                  INNER JOIN store_orders so ON su.id = so.user_id
+                  INNER JOIN store_order_items soi ON so.id = soi.order_id
+                  INNER JOIN store_products sp ON soi.product_Id = sp.id
+                  GROUP BY so.id;
+
+
+UPDATE store_users SET role = 'ROLE_USER';
