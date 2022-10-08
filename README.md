@@ -9,8 +9,9 @@
 ## Table of Contents
 
 - [Instructions](#instructions)
-- [Project goals](#project_goals)
-
+<!---
+ - [Project goals](#project_goals) -->
+ 
 
 ## Instructions <a name="instructions"></a>
 
