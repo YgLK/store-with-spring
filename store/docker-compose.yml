@@ -1,0 +1,17 @@
+version: '3.8'
+
+networks:
+  default:
+
+services:
+  db:
+    platform: linux/amd64
+    image: mysql:5.7
+    container_name: store
+    ports:
+      - 3306:3306
+    volumes:
+      - "./.data/db:/var/lib/mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: store
