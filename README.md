@@ -1,10 +1,10 @@
-# WEB-Jakub-Szpunar
-
 <h1 align="center"> Web Store
 
 ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
 [![Generic badge](https://img.shields.io/badge/MAVEN-<COLOR>.svg)](https://shields.io/)
 [![Generic badge](https://img.shields.io/badge/coverage-60/100-yellow.svg)](https://shields.io/)
+ </h1>
+
 
 ## Table of Contents
 
@@ -25,7 +25,7 @@ docker-compose up -d
 
 2. Open Docker Desktop and run the shown MySQL container.
 3. Run the Tomcat Server from IntelliJ which will build the essential tables with the use of Hibernate.
-4. Connect to the MySQL db and fill the database with the test data by entering the following [queries](https://github.com/gridu/WEB-Jakub-Szpunar/blob/dev/store/test_data_queries.sql):
+4. Connect to the MySQL db and fill the database with the test data by entering the following [queries](./store/test_data_queries.sql):
 ```sql
 # Fill the database with sample data for testing
 INSERT INTO store.store_products(price, productName, quantityStock) VALUES
